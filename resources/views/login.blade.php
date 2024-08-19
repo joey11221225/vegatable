@@ -95,6 +95,9 @@
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="email" required>
+            @error('username')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="form-group">

@@ -22,6 +22,7 @@ Route::get("/",[productsController::class,'home']);
 Route::post("/addcart/{product}",[productsController::class,'addcart'])->middleware("auth");
 
 
+
 //cart
 Route::get("/cartlist",[productsController::class,'cartlist']);
 
@@ -42,7 +43,9 @@ Route::post("/res_user",[UserController::class,'res_user']);
 
 Route::post("/logout",[UserController::class,'destroy']);
 
+Route::get("/otppage/{email}",[UserController::class,'otppage'])->name("sendotp");
 
+Route::post("/verifyemail/{email}",[UserController::class,'verifyemail']);
 
 
 
