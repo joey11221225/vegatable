@@ -11,9 +11,9 @@
                 @foreach ($products as $product)
                 <div class="col">
                     <div class="box_section">
-                      <div class="image_4"><img src="images/img-4.png"></div>
-                      <h2 class="dolor_text">$<span style="color: #ebc30a;">{{ $product->price }}</span></h2>
-                      <h2 class="dolor_text">{{ $product->name }}</h2>
+                      <div class="image_4"><img src="{{ asset('images/' . $product->p_image) }}" alt="{{ $product->p_name }}"></div>
+                      <h2 class="dolor_text">$<span style="color: #ebc30a;">{{ $product->p_price }}</span></h2>
+                      <h2 class="dolor_text">{{ $product->p_name }}</h2>
                       <h2 class="dolor_text_1">1 kg</h2>
                       <p class="tempor_text">adipiscing elit, sed do eiusmod tempor </p>
                       <div class="buy_bt_1 active">
