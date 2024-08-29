@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\products;
 use App\http\Controllers\productsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -26,9 +27,11 @@ Route::post("/addcart/{product}",[productsController::class,'addcart'])->middlew
 //cart
 Route::get("/cartlist",[productsController::class,'cartlist']);
 
+Route::put('/updatecart/{id}', [productsController::class, 'updateCart']);
+
 Route::put("/checkout/{cartid}",[productsController::class,'checkout']);
 
-Route::delete("/{id}/cartdelete",[productsController::class,'delete']);
+Route::delete("/cartdelete/{id}",[productsController::class,'delete']);
 
 
 
@@ -47,6 +50,13 @@ Route::get("/otppage/{email}",[UserController::class,'otppage'])->name("sendotp"
 
 Route::post("/verifyemail/{email}",[UserController::class,'verifyemail']);
 
+
+//profile
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile');
+
+Route::get('/editprofile', [ProfileController::class, 'editProfile']);
+
+Route::put('/edit/{profile}', [ProfileController::class, 'updateProfile']);
 
 
 

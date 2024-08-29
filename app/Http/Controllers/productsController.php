@@ -37,4 +37,18 @@ class productsController extends Controller
         return back()->with("message","Add to cart ");
 
     }
+
+    public function updateCart(Request $request, $id)
+{
+    $cartItem = cart::findOrFail($id);
+    $cartItem->qty = $request->input('qty');
+    $cartItem->save();
+
+    return redirect('/cartlist')->with('message', 'Quantity updated successfully.');
+}
+
+    public function delete(Request $request,product $id){
+        $id->delete();
+        return back()->with("message","Delete product successful.");
+    }
 }

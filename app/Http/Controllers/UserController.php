@@ -49,10 +49,6 @@ class UserController extends Controller
         return back()->withErrors("username",'Username or password is not correct');
     }
 
-    public function destroy(){
-
-    }
-
     public function verifyemail(Request $request,$email){
         $user=User::where("email","=",$email)->first();
         //dd($request->otp);
@@ -69,5 +65,20 @@ class UserController extends Controller
             "email"=>$email
         ]);
 
+    }
+
+    public function destroy(Request $request)
+    {
+        // Log the user out
+        Auth::logout();
+
+        // Invalidate the user's session
+        $request->session()->invalidate();
+
+        // Regenerate the session token to prevent session fixation attacks
+        $request->session()->regenerateToken();
+
+        // Redirect the user to the login page or homepage
+        return redirect('/login')->with('message', 'You have been logged out successfully.');
     }
 }
